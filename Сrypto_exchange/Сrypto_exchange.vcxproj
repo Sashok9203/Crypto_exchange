@@ -127,7 +127,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Сrypto_exchange.cpp" />
+    <ClCompile Include="CRExchange.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="myLib.cpp" />
+    <ClCompile Include="CRTrader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CRExchange.h" />
+    <ClInclude Include="Exchange.h" />
+    <ClInclude Include="myLib.h" />
+    <ClInclude Include="Struct.h" />
+    <ClInclude Include="Trader.h" />
+    <ClInclude Include="CRTrader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
