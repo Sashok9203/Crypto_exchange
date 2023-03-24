@@ -11,6 +11,7 @@ void CRTrader::startTrade(Exchange& exc, CrType cr, int tradeTrandLimit,int buyM
 void CRTrader::stopTrade(Exchange& exc, CrType cr)
 {
 	exc.UnSubscribe(cr,this);
+	if(currency.count(cr))currency.erase(cr);
 }
 
 float CRTrader::buyCrypto(Exchange& ex, CrType cr,int money)
@@ -53,7 +54,7 @@ void CRTrader::show() const
 	std::cout << "      Money : " << money << " $" << std::endl << std::endl;
 	if (!currency.empty())
 	{
-		for (auto val : currency)
+		for (auto& val : currency)
 		{
 			switch (val.first)
 			{
@@ -72,10 +73,11 @@ void CRTrader::show() const
 			case Avalanche:
 				std::cout << "   -= Avalanche =-" << std::endl;
 			}
-			std::cout << "      Count         : " << val.second.count << std::endl;
-			std::cout << "      Trade trend   : " << val.second.tradeTrandLimit << std::endl;
-			std::cout << "      Avarage trend : " << val.second.averageTrand << " points" << std::endl;
-			std::cout << "      Trade money   : " << val.second.buyMoney << " $" << std::endl << std::endl;
+			std::cout << "      Buy price         : " << (val.second.count? val.second.coin.price : 0) << std::endl;
+			std::cout << "      Count             : " << val.second.count << std::endl;
+			std::cout << "      Trade trend       : " << val.second.tradeTrandLimit << std::endl;
+			std::cout << "      Aver.price change : " << val.second.averageTrand << " points" << std::endl;
+			std::cout << "      Trade money       : " << val.second.buyMoney << " $" << std::endl << std::endl;
 		}
 	}
 }

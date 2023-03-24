@@ -25,14 +25,13 @@ private:
 	
 public:
 	CRTrader(const std::string name, int money) :name(name), money(money) {}
-	std::string getName() const { return name; }
-	
 	void  startTrade(Exchange& exc, CrType cr, int tradeTrand,int buyMoney);
 	void  stopTrade(Exchange& exc, CrType cr);
+	float getCoinsCount(CrType cr) const { return  currency.count(cr)?currency.at(cr).count:0; };
 	void  quotesUpdate(const Coin& coin)   override;
 	float buyCrypto(Exchange& ex, CrType cr,int money) override;
 	int   sellCrypto(Exchange& ex, CrType cr,float coins) override;
+	bool  isTrade() const { return !currency.empty(); }
 	void  show() const;
-
 };
 

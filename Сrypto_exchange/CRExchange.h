@@ -3,7 +3,7 @@
 #include "Exchange.h"
 #include <string>
 #include <map>
-
+#include <vector>
 
 
 
